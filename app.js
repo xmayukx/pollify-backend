@@ -1,15 +1,18 @@
 const express = require('express');
+const db = require('./config/db')
+const bodyParser = require('body-parser');
 const app = express();
-const port =3000;
+const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+const router=require('./routes');
 
-app.use(express.urlencoded({ extended: true }));
+db();
 
-
-app.get('/:user', (req, res) => {
-    res.send("Name: "+req.params.user);
-    console.log("User: "+req.params.user);
+app.use(router);
+app.get("/", (req, res) => {
+    res.send("Hello world!")
 })
 
 app.listen(port, () => {
-    console.log("listening on port 3000...");
+    console.log(`Server listening on port ${port}...`);
 });
