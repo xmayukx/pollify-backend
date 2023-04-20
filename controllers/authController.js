@@ -28,7 +28,7 @@ const login = async (req, res) => {
             res.status(400).send("Incorrect password!")
         } else {
             const payload = { email: email };
-            const accessToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '15s' })
+            const accessToken = jwt.sign(payload, process.env.JWT_SECRET)
             res.status(200).send({ accessToken: accessToken })
         }
     } else {

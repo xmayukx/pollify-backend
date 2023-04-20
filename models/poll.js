@@ -7,13 +7,22 @@ const pollSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    options: {
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Option', required: true }],
-
-    },
+    options: [
+        {
+            content: {
+                type: String,
+                required: true
+            },
+            voters: {
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+            },
+            votes: Number
+        }
+    ],
     owner_info: {
-        type: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 
