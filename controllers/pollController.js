@@ -22,13 +22,24 @@ const createPoll = async (req, res) => {
             { email: user.email },
             {
                 $push: { polls: newPoll._id }
-            }
+            },
+            { new: true }
         )
-        res.status(200).send(update);
 
+        // var c = await User.exists({ email: email })
+        // console.log(c._id)
+        res.status(200).send(update);
     } else {
         res.status(401).send("Something went wrong")
     }
+
+}
+
+
+const getPoll = async (req, res) => {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email: email })
 
 }
 

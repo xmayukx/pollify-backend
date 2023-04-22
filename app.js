@@ -10,7 +10,7 @@ db();
 
 app.use(router);
 app.get("/", (req, res) => {
-    res.send("Hello world!")
+    res.send("Pollify")
 })
 
 app.listen(port, () => {

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const User = require('./user');
-const Option = require('./option');
 
 const pollSchema = new mongoose.Schema({
     question: {
@@ -15,8 +14,7 @@ const pollSchema = new mongoose.Schema({
             },
             voters: {
                 type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-            },
-            votes: Number
+            }
         }
     ],
     owner_info: {
