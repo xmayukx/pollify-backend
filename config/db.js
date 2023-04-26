@@ -1,13 +1,19 @@
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-const db = async () => {
-    try {
-        const conn = await mongoose.connect('mongodb://127.0.0.1:27017/pollifyDB');
-        console.log(`MongoDB connected: ${conn.connection.host}`);
-    } catch (error) {
-        console.error(`Error connecting to MongoDB: ${error.message}`);
-        process.exit(1);
-    }
+const uri = `mongodb+srv://${process.env.USER_ADMIN}:${process.env.PASSWORD_ADMIN}@cluster0.qtgwdoz.mongodb.net/pollifyDB?retryWrites=true&w=majority`;
+
+const run = async () => {
+  await mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "MongoDB connection error:"));
+  db.once("open", () => {
+    console.log("Connected to MongoDB!");
+  });
 };
 
-module.exports = db;
+module.exports = { run };
