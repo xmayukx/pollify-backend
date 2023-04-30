@@ -10,7 +10,7 @@ db.run().catch(console.dir);
 
 app.use(router);
 app.get("/", (req, res) => {
-  res.send("Pollify");
+  res.send({ msg: "pollify-backend" });
 });
 
 app.listen(port, () => {
