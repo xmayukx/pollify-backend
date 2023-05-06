@@ -29,6 +29,7 @@ const login = async (req, res) => {
         } else {
             const payload = { email: email };
             const accessToken = jwt.sign(payload, process.env.JWT_SECRET)
+            console.log(payload)
             res.status(200).send({ accessToken: accessToken })
         }
     } else {

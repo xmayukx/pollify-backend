@@ -3,7 +3,7 @@ const authController = require("../controllers/authController")
 const authorization = require("../middlewares/authorization")
 const router = express.Router()
 
-router.post('/signup', authController.signUp);
-router.post('/login', authController.login);
+router.post('/signup',express.json(), authController.signUp);
+router.post('/login',express.json(), authController.login);
 
 module.exports = router
