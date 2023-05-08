@@ -11,6 +11,7 @@ const authorization = (req, res, next) => {
         if (err) return res.status(403).send("unauthorized user")
         console.log(user);
         req.body.email=user.email;
+        req.body.authStatus=200
         next()
     })
 }
