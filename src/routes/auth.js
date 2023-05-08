@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post("/signup", express.json(), authController.signUp);
 router.post("/login", express.json(), authController.login);
-router.post("/check", express.json(), authorization, authController.checkauth);
+router.get("/check", express.json(), authorization, authController.checkauth);
 
 module.exports = router;
