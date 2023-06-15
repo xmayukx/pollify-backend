@@ -11,6 +11,7 @@ router.get(
   pollAuth,
   pollController.getPoll
 );
+
 router.post(
   "/createPoll",
   express.json(),

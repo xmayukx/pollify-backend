@@ -4,7 +4,7 @@ const User = require("../models/user");
 const Poll = require("../models/poll");
 
 const createPoll = async (req, res) => {
-//  console.log(req.body);
+  //  console.log(req.body);
   const { question, options, email } = req.body;
 
   const user = await User.findOne({ email: email });
@@ -27,7 +27,7 @@ const createPoll = async (req, res) => {
 
     // var c = await User.exists({ email: email })
     // console.log(c._id)
-    res.status(200).send(update);
+    res.status(200).send({ pollID: newPoll.id});
   } else {
     res.status(401).send("Something went wrong");
   }
