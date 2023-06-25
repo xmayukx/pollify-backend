@@ -1,6 +1,6 @@
 const Poll = require("../models/poll");
 const User = require("../models/user");
-const ObjectId = require("mongoose").Types.ObjectId;
+// const ObjectId = require("mongoose").Types.ObjectId;
 const pollAuth = async (req, res, next) => {
   const { pollID } = req.params;
   const { email } = req.body;

@@ -25,9 +25,11 @@ const createPoll = async (req, res) => {
       { new: true }
     );
 
+
     // var c = await User.exists({ email: email })
     // console.log(c._id)
-    res.status(200).send({ pollID: newPoll.id});
+    
+    res.status(200).send({ pollID: newPoll});
   } else {
     res.status(401).send("Something went wrong");
   }
